@@ -1,12 +1,10 @@
 body {
   --font-size-default: 16px;
+  --font-size-small: 12px;
   --font-family-default: "Public Sans", sans-serif;
   --text-color-default: #201f24;
   --text-color-menu: #b3b3b3;
 
   --color-background-primary: #201f24;
   --color-background-secondary: #f8f4f0;
-
-  --media-breakpoint-tablet: 768px;
-  --media-breakpoint-desktop: 1024px;
 }
