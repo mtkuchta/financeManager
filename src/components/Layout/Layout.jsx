@@ -2,6 +2,9 @@ import styles from "./Layout.module.css";
 
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+
+import UserDataProvider from "../../assets/contexts/UserDataContext";
+
 import debounce from "lodash/debounce";
 
 import { MenuBar } from "../MenuBar/MenuBar";
@@ -31,10 +34,12 @@ export function Layout() {
 
   return (
     <div className={styles.wrapper}>
-      <main>
-        <Outlet />
-      </main>
-      <MenuBar windowSize={windowSize} />
+      <UserDataProvider>
+        <main>
+          <Outlet />
+        </main>
+        <MenuBar windowSize={windowSize} />
+      </UserDataProvider>
     </div>
   );
 }
