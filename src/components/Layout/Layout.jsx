@@ -35,10 +35,10 @@ export function Layout() {
   return (
     <div className={styles.wrapper}>
       <UserDataProvider>
+        <MenuBar windowSize={windowSize} />
         <main>
           <Outlet />
         </main>
-        <MenuBar windowSize={windowSize} />
       </UserDataProvider>
     </div>
   );

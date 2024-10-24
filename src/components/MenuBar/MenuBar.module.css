@@ -73,6 +73,8 @@
   align-items: center;
 }
 
+/* --------------------------TABLET-------------------------------- */
+
 @media (min-width: 768px) {
   .menuWrapper {
     height: 74px;
@@ -92,11 +94,13 @@
   }
 }
 
+/* --------------------------------DESKTOP-------------------------------- */
+
 @media (min-width: 1024px) {
   .menuWrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
+    /* top: 0;
+    left: 0; */
     width: 300px;
     height: 100vh;
     background-color: var(--color-background-primary);

@@ -4,3 +4,9 @@
   background-color: var(--color-background-secondary);
   overflow: hidden;
 }
+
+@media (min-width: 1024px) {
+  .wrapper {
+    display: flex;
+  }
+}
