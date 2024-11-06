@@ -1,10 +1,13 @@
 import styles from "./MenuBar.module.css";
+import { useContext } from "react";
 import { menuCategories } from "../../assets/constants/menuCategories";
 import { NavLink } from "react-router-dom";
 
 import { Logo } from "../Logo/Logo";
+import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
 
-export function MenuBar({ windowSize }) {
+export function MenuBar() {
+  const { windowSize } = useContext(WindowSizeContext);
   return (
     <div className={styles.menuWrapper}>
       <nav className={styles.navigation}>
