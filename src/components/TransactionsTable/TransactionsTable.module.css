@@ -1,9 +1,45 @@
 .tableContainer {
-  width: 100%;
+  /* width: 100%; */
   height: 100vh;
   flex-basis: auto;
   flex-grow: 1;
   background-color: var(--color-background-white);
   border-radius: 12px;
   padding: 32px;
+}
+
+table {
+  width: 100%;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0;
+  color: var(--color-grey-500);
+}
+
+.tableRow {
+  /* width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; */
+  border-bottom: 1px solid var(--color-grey-100);
+}
+
+.headerRow {
+  height: 60px;
+  width: 100%;
+}
+
+.tableColumn:nth-child(1) {
+  width: 45%;
+}
+
+.contentRow {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+}
+
+.contentCell {
+  width: 50%;
+  height: 50%;
 }

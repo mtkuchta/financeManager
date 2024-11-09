@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import data from "../data/data.json";
 
 export const UserDataContext = createContext();
@@ -9,6 +9,11 @@ export const UserDataProvider = ({ children }) => {
   const [pots, setPots] = useState(data.pots);
   const [transactions, setTransactions] = useState(data.transactions);
 
+  // useEffect(() => {
+  //   setTransactions(data.transactions);
+  // }, []);
+
+  console.log(transactions);
   return (
     <UserDataContext.Provider
       value={{
