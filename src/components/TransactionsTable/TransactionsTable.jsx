@@ -7,6 +7,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
+import { changeDateFormat } from "../../assets/helpers/changeDateFormat";
+import { formatAmount } from "../../assets/helpers/formatAmount";
 
 const columns = [
   {
@@ -22,12 +24,12 @@ const columns = [
   {
     accessorKey: "date",
     header: "Transaction Date",
-    cell: (props) => <p>{props.getValue()}</p>,
+    cell: (props) => <p>{changeDateFormat(props.getValue())}</p>,
   },
   {
     accessorKey: "amount",
     header: "Amount",
-    cell: (props) => <p>{props.getValue()}</p>,
+    cell: (props) => <p>{formatAmount(props.getValue())}</p>,
   },
 ];
 
@@ -39,8 +41,6 @@ export function TransactionsTable() {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  console.log(table.getRowModel());
 
   return (
     <div className={styles.tableContainer}>
@@ -69,7 +69,15 @@ export function TransactionsTable() {
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} className={styles.contentRow}>
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className={styles.contentCell}>
+                <td
+                  key={cell.id}
+                  className={`${styles.contentCell} ${
+                    cell.id.includes("amount") && cell.getValue() > 0
+                      ? styles.cellIncome
+                      : ""
+                  }`}
+                  id={cell.id}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}
