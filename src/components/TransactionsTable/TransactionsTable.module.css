@@ -1,5 +1,6 @@
 .tableContainer {
   height: 100vh;
+  max-width: 1060px;
   flex-basis: auto;
   flex-grow: 1;
   background-color: var(--color-background-white);
@@ -22,6 +23,14 @@ table {
 .headerRow {
   height: 60px;
   width: 100%;
+}
+
+.tableColumn {
+  text-align: left;
+}
+
+.tableColumn:nth-child(4) {
+  text-align: right;
 }
 
 .tableColumn:nth-child(1) {
@@ -77,4 +86,26 @@ table {
 
 .cellIncome p {
   color: var(--color-green);
+}
+
+@media (min-width: 768px) {
+  .contentRow {
+    display: table-row;
+    height: 60px;
+  }
+
+  .contentCell {
+    display: table-cell;
+    width: auto;
+    line-height: 40px;
+    border-bottom: 1px solid var(--color-grey-100);
+  }
+
+  .contentCell p {
+    text-align: left;
+  }
+
+  .contentCell:nth-child(4) p {
+    text-align: right;
+  }
 }
