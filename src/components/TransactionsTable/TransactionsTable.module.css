@@ -1,5 +1,5 @@
 .tableContainer {
-  height: 100vh;
+  height: 100%;
   max-width: 1060px;
   flex-basis: auto;
   flex-grow: 1;
@@ -14,15 +14,13 @@ table {
   line-height: 18px;
   letter-spacing: 0;
   color: var(--color-grey-500);
-}
-
-.tableRow {
-  border-bottom: 1px solid var(--color-grey-100);
+  border-spacing: 0;
 }
 
 .headerRow {
   height: 60px;
   width: 100%;
+  border-bottom: 2px solid var(--color-grey-100);
 }
 
 .tableColumn {
