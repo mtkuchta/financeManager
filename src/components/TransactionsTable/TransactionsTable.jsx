@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./TransactionsTable.module.css";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import {
   flexRender,
   getCoreRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
 import { changeDateFormat } from "../../assets/helpers/changeDateFormat";
 import { formatAmount } from "../../assets/helpers/formatAmount";
+import { PaginationBar } from "../PaginationBar/PaginationBar";
 
 const columns = [
   {
@@ -36,10 +38,16 @@ const columns = [
 export function TransactionsTable() {
   const { windowSize } = useContext(WindowSizeContext);
   const { transactions } = useContext(UserDataContext);
+
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+
   const table = useReactTable({
     data: transactions,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: setPagination,
+    state: { pagination },
   });
 
   return (
@@ -48,10 +56,7 @@ export function TransactionsTable() {
         <thead>
           {windowSize !== "mobile" &&
             table.getHeaderGroups().map((headerGroup) => (
-              <tr
-                className={`${styles.tableRow} ${styles.headerRow}`}
-                key={headerGroup.id}
-              >
+              <tr className={` ${styles.headerRow}`} key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <th className={styles.tableColumn} key={header.id}>
                     {header.isPlaceholder
@@ -85,6 +90,7 @@ export function TransactionsTable() {
           ))}
         </tbody>
       </table>
+      <PaginationBar table={table} currentPageIndex={pagination.pageIndex} />
     </div>
   );
 }

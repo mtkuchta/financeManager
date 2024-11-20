@@ -13,7 +13,6 @@ export const UserDataProvider = ({ children }) => {
   //   setTransactions(data.transactions);
   // }, []);
 
-  console.log(transactions);
   return (
     <UserDataContext.Provider
       value={{
