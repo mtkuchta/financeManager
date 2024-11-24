@@ -90,7 +90,9 @@ export function TransactionsTable() {
           ))}
         </tbody>
       </table>
-      <PaginationBar table={table} currentPageIndex={pagination.pageIndex} />
+      {table.getPageCount() > 1 && (
+        <PaginationBar table={table} currentPageIndex={pagination.pageIndex} />
+      )}
     </div>
   );
 }

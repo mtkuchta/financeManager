@@ -8,14 +8,15 @@ import { getPaginationRange } from "../../assets/helpers/getPaginationRange";
 export function PaginationBar({ table, currentPageIndex }) {
   const { windowSize } = useContext(WindowSizeContext);
   const numberOfPages = table.getPageCount();
-  const buttons = Array(numberOfPages).fill("Button");
 
-  const paginationDelta = windowSize === "mobile" ? 2 : 10;
+  const paginationDelta = windowSize === "mobile" ? 1 : 2;
+  const isMobile = windowSize === "mobile";
 
   const paginationRange = getPaginationRange(
     currentPageIndex,
     numberOfPages,
-    paginationDelta
+    paginationDelta,
+    isMobile
   );
 
   return (
@@ -28,33 +29,26 @@ export function PaginationBar({ table, currentPageIndex }) {
         <IconCaretLeft />
         {windowSize != "mobile" && <span>Prev</span>}
       </button>
-      {/* {buttons.map((item, index) => (
-        <button
-          key={`button_Pag_${index}`}
-          className={`${styles.buttonSquare} ${
-            index == currentPageIndex ? styles.buttonActive : ""
-          }`}
-        >
-          {index + 1}
-        </button>
-      ))} */}
+      <div className={styles.buttonsContainer}>
+        {paginationRange.map((page, index) =>
+          page === "..." ? (
+            <button key={index} className={styles.buttonSquare}>
+              ...
+            </button>
+          ) : (
+            <button
+              key={index}
+              className={`${styles.buttonSquare} ${
+                page == currentPageIndex + 1 ? styles.buttonActive : ""
+              }`}
+              onClick={() => table.setPageIndex(page - 1)}
+            >
+              {page}
+            </button>
+          )
+        )}
+      </div>
 
-      {paginationRange.map((page, index) =>
-        page === "..." ? (
-          <button key={index} className={styles.buttonSquare}>
-            ...
-          </button>
-        ) : (
-          <button
-            key={index}
-            className={`${styles.buttonSquare} ${
-              index == currentPageIndex ? styles.buttonActive : ""
-            }`}
-          >
-            {page}
-          </button>
-        )
-      )}
       <button
         className={styles.buttonLong}
         disabled={!table.getCanNextPage()}
