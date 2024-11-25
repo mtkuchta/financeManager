@@ -11,6 +11,7 @@ import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
 import { changeDateFormat } from "../../assets/helpers/changeDateFormat";
 import { formatAmount } from "../../assets/helpers/formatAmount";
 import { PaginationBar } from "../PaginationBar/PaginationBar";
+import { SearchAndSortBar } from "../SearchAndSortBar/SearchAndSortBar";
 
 const columns = [
   {
@@ -52,6 +53,7 @@ export function TransactionsTable() {
 
   return (
     <div className={styles.tableContainer}>
+      <SearchAndSortBar />
       <table>
         <thead>
           {windowSize !== "mobile" &&
