@@ -12,6 +12,7 @@ import { changeDateFormat } from "../../assets/helpers/changeDateFormat";
 import { formatAmount } from "../../assets/helpers/formatAmount";
 import { PaginationBar } from "../PaginationBar/PaginationBar";
 import { SearchAndSortBar } from "../SearchAndSortBar/SearchAndSortBar";
+import { getValueFromTable } from "../../assets/helpers/getValueFromTable";
 
 const columns = [
   {
@@ -51,9 +52,14 @@ export function TransactionsTable() {
     state: { pagination },
   });
 
+  const categories = getValueFromTable(transactions, "category");
+
   return (
     <div className={styles.tableContainer}>
-      <SearchAndSortBar />
+      <SearchAndSortBar
+        categories={categories}
+        isMobile={windowSize === "mobile" ? true : false}
+      />
       <table>
         <thead>
           {windowSize !== "mobile" &&

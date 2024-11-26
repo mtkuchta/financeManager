@@ -1,0 +1,32 @@
+.searchAndSortBar {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.searchInputWrapper {
+  width: 215px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid var(--color-beige-500);
+  border-radius: 8px;
+}
+
+.searchInput {
+  width: 143px;
+  font-size: var(--font-size-preset-4);
+  border: none;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.selectsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
