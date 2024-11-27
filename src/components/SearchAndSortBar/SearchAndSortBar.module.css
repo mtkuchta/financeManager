@@ -30,3 +30,9 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.selectText {
+  color: var(--color-grey-500);
+  margin-left: 25px;
+  margin-right: 10px;
+}
