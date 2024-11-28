@@ -9,6 +9,7 @@ export function Select({
   options,
   isOpen,
   openHandler,
+  onChangeHandler,
 }) {
   return (
     <div className={styles.selectWrapper}>
@@ -19,11 +20,19 @@ export function Select({
       )}
 
       {isOpen && (
-        <select name={name} id="" multiple={isMobile ? true : false}>
-          {options.map((option) => (
-            <option key={option}>{option}</option>
-          ))}
-        </select>
+        <>
+          <select
+            name={name}
+            id=""
+            multiple={isMobile ? true : false}
+            onChange={onChangeHandler}
+          >
+            {options.map((option) => (
+              <option key={option}>{option}</option>
+            ))}
+          </select>
+          <span className={styles.customArrow}></span>
+        </>
       )}
     </div>
   );

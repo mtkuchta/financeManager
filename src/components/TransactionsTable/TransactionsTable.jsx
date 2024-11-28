@@ -4,6 +4,7 @@ import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import {
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -40,25 +41,35 @@ const columns = [
 export function TransactionsTable() {
   const { windowSize } = useContext(WindowSizeContext);
   const { transactions } = useContext(UserDataContext);
+  const { currentSort, setCurrentSort } = useState("Latest");
 
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+  const [columnFilters, setColumnFilters] = useState([]);
 
   const table = useReactTable({
     data: transactions,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
-    state: { pagination },
+    state: { pagination, columnFilters },
   });
 
-  const categories = getValueFromTable(transactions, "category");
+  const categories = [
+    "All transactions",
+    ...getValueFromTable(transactions, "category"),
+  ];
 
   return (
     <div className={styles.tableContainer}>
       <SearchAndSortBar
         categories={categories}
         isMobile={windowSize === "mobile" ? true : false}
+        value={currentSort}
+        setValue={setCurrentSort}
+        columnFilters={columnFilters}
+        setColumnFilters={setColumnFilters}
       />
       <table>
         <thead>
