@@ -39,6 +39,7 @@ export function SearchAndSortBar({
   };
 
   const handleFilterCategory = (e) => {
+    setIsFilterSelectOpen(false);
     setColumnFilters((prev) => {
       const statuses = prev.find((filter) => filter.id === "category")?.value;
 
@@ -56,6 +57,7 @@ export function SearchAndSortBar({
 
   const handleChangeSort = (e) => {
     const sortOption = e.target.value;
+    setIsSortSelectOpen(false);
 
     switch (sortOption) {
       case "Latest":
