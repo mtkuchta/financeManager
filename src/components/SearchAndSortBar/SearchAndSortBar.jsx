@@ -13,6 +13,7 @@ export function SearchAndSortBar({
   isMobile,
   columnFilters,
   setColumnFilters,
+  setSorting,
 }) {
   const [isSortSelectOpen, setIsSortSelectOpen] = useState(false);
   const [isFilterSelectOpen, setIsFilterSelectOpen] = useState(false);
@@ -53,6 +54,33 @@ export function SearchAndSortBar({
     });
   };
 
+  const handleChangeSort = (e) => {
+    const sortOption = e.target.value;
+
+    switch (sortOption) {
+      case "Latest":
+        setSorting([{ id: "date", desc: true }]);
+        break;
+      case "Oldest":
+        setSorting([{ id: "date", desc: false }]);
+        break;
+      case "A to Z":
+        setSorting([{ id: "name", desc: false }]);
+        break;
+      case "Z to A":
+        setSorting([{ id: "name", desc: true }]);
+        break;
+      case "Highest":
+        setSorting([{ id: "amount", desc: true }]);
+        break;
+      case "Lowest":
+        setSorting([{ id: "amount", desc: false }]);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className={styles.searchAndSortBar}>
       <div className={styles.searchInputWrapper}>
@@ -73,6 +101,7 @@ export function SearchAndSortBar({
           isOpen={isMobile ? isSortSelectOpen : true}
           openHandler={handleOpenSelects}
           isMobile={isMobile}
+          onChangeHandler={handleChangeSort}
         >
           <IconSort id="select_sort" />
         </Select>
@@ -83,7 +112,6 @@ export function SearchAndSortBar({
           isOpen={isMobile ? isFilterSelectOpen : true}
           openHandler={handleOpenSelects}
           isMobile={isMobile}
-          // value={"All categories"}
           onChangeHandler={handleFilterCategory}
         >
           <IconFilter id="select_filter" />

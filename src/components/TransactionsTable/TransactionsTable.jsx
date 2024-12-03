@@ -6,6 +6,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
@@ -45,6 +46,7 @@ export function TransactionsTable() {
 
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
   const [columnFilters, setColumnFilters] = useState([]);
+  const [sorting, setSorting] = useState([]);
 
   const table = useReactTable({
     data: transactions,
@@ -53,7 +55,9 @@ export function TransactionsTable() {
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
-    state: { pagination, columnFilters },
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+    state: { pagination, columnFilters, sorting },
   });
 
   const categories = [
@@ -70,6 +74,7 @@ export function TransactionsTable() {
         setValue={setCurrentSort}
         columnFilters={columnFilters}
         setColumnFilters={setColumnFilters}
+        setSorting={setSorting}
       />
       <table>
         <thead>
