@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import data from "../data/data.json";
 
 export const UserDataContext = createContext();
@@ -8,10 +8,6 @@ export const UserDataProvider = ({ children }) => {
   const [budgets, setBugets] = useState(data.budgets);
   const [pots, setPots] = useState(data.pots);
   const [transactions, setTransactions] = useState(data.transactions);
-
-  // useEffect(() => {
-  //   setTransactions(data.transactions);
-  // }, []);
 
   return (
     <UserDataContext.Provider
