@@ -1,0 +1,35 @@
+.budgetContainer {
+  width: 100%;
+  padding: 24px 20px 24px 20px;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.budgetHeader {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.budgetTheme {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.budgetName {
+  color: var(--color-grey-900);
+  font-size: var(--font-size-preset-2);
+  font-weight: bold;
+  line-height: 24px;
+  flex-grow: 2;
+  padding-left: 10px;
+}
+
+.budgetOptionsIcon {
+  height: 24px;
+  display: flex;
+}

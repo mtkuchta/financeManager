@@ -7,7 +7,6 @@ import { Budget } from "../../components/Budget/Budget";
 
 export function Budgets() {
   const { budgets, transactions } = useContext(UserDataContext);
-  console.log(budgets, transactions);
   return (
     <div>
       <ContentHeader />

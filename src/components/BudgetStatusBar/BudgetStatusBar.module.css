@@ -1,0 +1,22 @@
+.statusBarContainer {
+  widht: 100%;
+}
+
+.text {
+  color: var(--color-grey-500);
+  font-size: var(--font-size-preset-4);
+}
+
+.statusBar {
+  height: 32px;
+  width: 100%;
+  background-color: var(--color-beige-100);
+  border-radius: 4px;
+  padding: 4px;
+  margin: 12px 0;
+}
+
+.statusBarFill {
+  height: 24px;
+  border-radius: 4px;
+}
