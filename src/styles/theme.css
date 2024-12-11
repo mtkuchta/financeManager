@@ -1,7 +1,10 @@
 body {
   --font-size-default: 16px;
   --font-size-small: 12px;
+  --font-size-preset-2: 20px;
+  --font-size-preset-3: 16px;
   --font-size-preset-4: 14px;
+  --font-size-preset-5: 12px;
   --font-family-default: "Public Sans", sans-serif;
   --text-color-default: #201f24;
   --text-color-menu: #b3b3b3;
@@ -15,6 +18,7 @@ body {
   --color-grey-500: #696868;
   --color-grey-300: #b3b3b3;
   --color-grey-100: #f2f2f2;
+  --color-beige-100: #f8f4f0;
   --color-beige-500: #98908b;
   --color-white: #ffffff;
 }
