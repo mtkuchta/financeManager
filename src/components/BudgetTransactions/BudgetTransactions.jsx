@@ -1,6 +1,7 @@
 import styles from "./BudgetTransactions.module.css";
 
 import { ReactComponent as IconCaretRight } from "../../assets/icons/icon-caret-right.svg";
+import { ReactComponent as IconCaretLeft } from "../../assets/icons/icon-caret-left.svg";
 import { changeDateFormat } from "../../assets/helpers/changeDateFormat";
 import { formatAmount } from "../../assets/helpers/formatAmount";
 import { useEffect, useState } from "react";
@@ -32,7 +33,12 @@ export function BudgetTransactions({ budgetTransactions }) {
         <button onClick={handleShowTransactions}>
           {budgetTransactions.length >= 4 && (
             <>
-              <span>See all</span> <IconCaretRight />
+              <span>{!isAllTransactionsVisible ? "See all" : "See less"}</span>
+              {isAllTransactionsVisible ? (
+                <IconCaretLeft />
+              ) : (
+                <IconCaretRight />
+              )}
             </>
           )}
         </button>
