@@ -3,19 +3,13 @@ import { ReactComponent as IconEllipsis } from "../../assets/icons/icon-ellipsis
 import { BudgetStatusBar } from "../BudgetStatusBar/BudgetStatusBar";
 import { BudgetSummary } from "../BudgetSummary/BudgetSummary";
 import { BudgetTransactions } from "../BudgetTransactions/BudgetTransactions";
+import { BudgetContainer } from "../BudgetContainer/BudgetContainer";
+
+import { calculateCategorySpent } from "../../assets/helpers/calculateCategorySpent";
 
 export function Budget({ budget, budgetTransactions }) {
-  const calculateSpent = () => {
-    let spent = 0;
-
-    budgetTransactions.map((transaction) => {
-      spent += Math.abs(transaction.amount);
-    });
-    return spent.toFixed(2);
-  };
-
   return (
-    <div className={styles.budgetContainer}>
+    <BudgetContainer>
       <div className={styles.budgetHeader}>
         <div
           className={styles.budgetTheme}
@@ -26,15 +20,15 @@ export function Budget({ budget, budgetTransactions }) {
       </div>
       <BudgetStatusBar
         maximum={budget.maximum}
-        spent={calculateSpent()}
+        spent={calculateCategorySpent(budgetTransactions)}
         color={budget.theme}
       />
       <BudgetSummary
-        spent={calculateSpent()}
+        spent={calculateCategorySpent(budgetTransactions)}
         maximum={budget.maximum}
         theme={budget.theme}
       />
       <BudgetTransactions budgetTransactions={budgetTransactions} />
-    </div>
+    </BudgetContainer>
   );
 }

@@ -1,0 +1,17 @@
+.chartContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.textTotal {
+  font-size: var(--font-size-preset-1);
+  color: var(--color-grey-900);
+}
+
+.textLimit {
+  font-size: var(--font-size-preset-5);
+  color: var(--color-grey-500);
+}

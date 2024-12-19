@@ -24,7 +24,6 @@ export function BudgetTransactions({ budgetTransactions }) {
   const handleShowTransactions = () => {
     setIsAllTransactionsVisible(!isAllTransactionsVisible);
   };
-  console.log(budgetTransactions.length >= 4);
 
   return (
     <div className={styles.budgetTransactionsContainer}>

@@ -8,7 +8,7 @@ export function BudgetSummary({ maximum, spent, theme }) {
         style={{ "--theme-color": theme }}
       >
         <span>Spent</span>
-        <p>${maximum}</p>
+        <p>${spent}</p>
       </div>
       <div
         className={styles.budgetSummaryItem}

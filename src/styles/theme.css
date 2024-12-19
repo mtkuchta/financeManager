@@ -1,6 +1,7 @@
 body {
   --font-size-default: 16px;
   --font-size-small: 12px;
+  --font-size-preset-1: 32px;
   --font-size-preset-2: 20px;
   --font-size-preset-3: 16px;
   --font-size-preset-4: 14px;
