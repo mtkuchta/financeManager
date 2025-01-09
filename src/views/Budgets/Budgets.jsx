@@ -5,12 +5,15 @@ import { useContext } from "react";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { Budget } from "../../components/Budget/Budget";
 import { BudgetsSummary } from "../../components/BudgetsSummary/BudgetsSummary";
+import { Button } from "../../components/Button/Button";
 
 export function Budgets() {
   const { budgets, transactions } = useContext(UserDataContext);
   return (
     <div>
-      <ContentHeader />
+      <ContentHeader>
+        <Button text={"+ Add New Budget"} />
+      </ContentHeader>
       <div className={styles.budgetsContainer}>
         <BudgetsSummary budgets={budgets} transactions={transactions} />
         {budgets.map((budget) => (
