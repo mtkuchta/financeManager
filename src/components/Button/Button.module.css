@@ -1,7 +1,13 @@
-button {
+.button {
   height: 53px;
   width: 155px;
-  background-color: var(--color-grey-900);
+  /* background-color: var(--color-grey-900); */
+  background: linear-gradient(
+      0deg,
+      var(--color-grey-900),
+      var(--color-grey-900)
+    ),
+    var(--color-grey-900);
   color: var(--color-white);
   font-size: var(--font-size-preset-4);
   font-weight: bold;
@@ -13,6 +19,11 @@ button {
 
 @media (min-width: 1024px) {
   button:hover {
-    background-color: var(--color-grey-500);
+    /* background-color: var(--color-grey-500); */
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    );
   }
 }
