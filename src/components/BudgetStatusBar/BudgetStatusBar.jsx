@@ -5,7 +5,6 @@ export function BudgetStatusBar({ maximum, spent, color }) {
     return spent < maximum ? (spent * 100) / maximum : 100;
   };
 
-  console.log(`${calculateStatusBarFill()}%`);
   return (
     <div className={styles.statusBarContainer}>
       <span className={styles.text}>{`Maximum of $${maximum}`}</span>

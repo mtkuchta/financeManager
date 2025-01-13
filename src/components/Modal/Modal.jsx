@@ -1,7 +1,7 @@
 import styles from "./Modal.module.css";
 import ReactDom from "react-dom";
 
-export function Modal({ title, isOpen, onClose }) {
+export function Modal({ title, isOpen, onClose, children }) {
   if (!isOpen) return null;
 
   return ReactDom.createPortal(
@@ -13,6 +13,7 @@ export function Modal({ title, isOpen, onClose }) {
             X
           </button>
         </div>
+        {children}
       </div>
     </div>,
     document.getElementById("modal-root")

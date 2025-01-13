@@ -5,9 +5,16 @@ export const UserDataContext = createContext();
 
 export const UserDataProvider = ({ children }) => {
   const [balance, setBalance] = useState(data.balance);
-  const [budgets, setBugets] = useState(data.budgets);
+  const [budgets, setBudgets] = useState(data.budgets);
   const [pots, setPots] = useState(data.pots);
   const [transactions, setTransactions] = useState(data.transactions);
+
+  const handleDeleteBudget = (budgetToDelete) => {
+    const updatedBudgets = budgets.filter(
+      (budget) => budget.category !== budgetToDelete
+    );
+    setBudgets(updatedBudgets);
+  };
 
   return (
     <UserDataContext.Provider
@@ -17,9 +24,10 @@ export const UserDataProvider = ({ children }) => {
         pots,
         transactions,
         setBalance,
-        setBugets,
+        setBudgets,
         setPots,
         setTransactions,
+        handleDeleteBudget,
       }}
     >
       {children}

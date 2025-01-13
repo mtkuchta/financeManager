@@ -9,7 +9,8 @@ import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
 
 export function Budgets() {
-  const { budgets, transactions } = useContext(UserDataContext);
+  const { budgets, transactions, handleDeleteBudget } =
+    useContext(UserDataContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -29,6 +30,7 @@ export function Budgets() {
             budgetTransactions={transactions.filter(
               (transaction) => transaction.category === budget.category
             )}
+            deleteBudget={handleDeleteBudget}
           />
         ))}
       </div>
