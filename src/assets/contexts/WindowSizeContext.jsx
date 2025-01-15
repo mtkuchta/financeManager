@@ -4,7 +4,9 @@ import debounce from "lodash/debounce";
 export const WindowSizeContext = createContext();
 
 export const WindowSizeProvider = ({ children }) => {
-  const [windowSize, setWindowSize] = useState("desktop");
+  const [windowSize, setWindowSize] = useState(
+    window.innerWidth > 1024 ? "desktop" : "mobile"
+  );
 
   useEffect(() => {
     const handleResizeWindow = debounce(() => {
@@ -24,9 +26,7 @@ export const WindowSizeProvider = ({ children }) => {
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
     };
-  }, []);
-
-  console.log(windowSize);
+  }, [windowSize]);
 
   return (
     <WindowSizeContext.Provider
