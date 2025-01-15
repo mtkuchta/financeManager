@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-select {
+.transactionsSelect {
   position: absolute;
   top: -20;
   right: 0;
@@ -23,7 +23,7 @@ select {
   padding: 12px 20px;
 }
 
-option {
+.transactionsOption {
   margin-top: 9px;
   height: 30px;
   line-height: 21px;
@@ -33,7 +33,7 @@ option {
 }
 
 @media (min-width: 768px) {
-  select {
+  .transactionsSelect {
     position: relative;
     height: auto;
     color: var(--color-grey-900);
@@ -46,7 +46,7 @@ option {
     padding-right: 3rem;
   }
 
-  select:focus {
+  .transactionsSelect:focus {
     outline: none;
   }
 

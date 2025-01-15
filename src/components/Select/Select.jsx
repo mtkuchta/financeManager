@@ -26,9 +26,12 @@ export function Select({
             id=""
             multiple={isMobile ? true : false}
             onChange={onChangeHandler}
+            className={styles.transactionsSelect}
           >
             {options.map((option) => (
-              <option key={option}>{option}</option>
+              <option key={option} className={styles.transactionsOption}>
+                {option}
+              </option>
             ))}
           </select>
           <span className={styles.customArrow}></span>
