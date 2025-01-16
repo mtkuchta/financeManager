@@ -38,9 +38,17 @@ button {
   cursor: pointer;
 }
 
+select,
+label {
+  font-family: var(--font-family-default);
+}
+p {
+  font-family: var(--font-family-default);
+}
+
 body {
   font-size: var(--font-size-default);
-  font-family: var(--font-family-default);
+
   color: var(--color-text-default);
 }
 
