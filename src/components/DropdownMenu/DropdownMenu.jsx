@@ -8,12 +8,16 @@ export function DropdownMenu({
   value,
   onChange,
   placeholder,
+  optionThemes = false,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
-    onChange(option);
-    setIsOpen(false);
+    if (usedOptions.includes(option)) return;
+    else {
+      onChange(option);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -32,9 +36,27 @@ export function DropdownMenu({
               className={styles.option}
               onClick={() => handleSelect(option.value)}
             >
-              <span>{option.label}</span>
+              <div className={styles.themeContainer}>
+                {optionThemes && (
+                  <div
+                    className={styles.optionTheme}
+                    style={{
+                      backgroundColor: `${option.value}`,
+                      opacity: usedOptions.includes(option.value) ? "50%" : "",
+                    }}
+                  ></div>
+                )}
+                <span
+                  className={
+                    usedOptions.includes(option.value) ? styles.isUsed : ""
+                  }
+                >
+                  {option.label}
+                </span>
+              </div>
+
               {usedOptions.includes(option.value) && (
-                <span className={styles.isUsed}>Already used</span>
+                <span className={styles.isUsedInfo}>Already used</span>
               )}
             </li>
           ))}
