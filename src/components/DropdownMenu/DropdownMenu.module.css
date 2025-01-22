@@ -41,6 +41,7 @@
   padding: 12px 20px;
   font-size: var(--font-size-preset-4);
   color: var(--color-grey-900);
+  z-index: 1000;
 }
 
 .option {
@@ -64,6 +65,7 @@
 .themeContainer {
   display: flex;
 }
+
 .optionTheme {
   height: 16px;
   width: 16px;

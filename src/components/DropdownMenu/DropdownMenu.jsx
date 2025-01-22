@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./DropdownMenu.module.css";
 import { ReactComponent as IconCaretDown } from "../../assets/icons/icon-caret-down.svg";
+import { themeColors } from "../../assets/constants/themeColors";
 
 export function DropdownMenu({
   options,
@@ -20,10 +21,35 @@ export function DropdownMenu({
     }
   };
 
+  const findValueData = (value) => {
+    const valueData = themeColors.filter((theme) => theme.value === value);
+    return valueData.length != 0 ? valueData : value;
+  };
+
   return (
     <div className={styles.dropdownContainer}>
       <div className={styles.control} onClick={() => setIsOpen(!isOpen)}>
-        <span className={styles.text}>{value || placeholder}</span>
+        <span className={styles.text}>
+          {value ? (
+            <div className={styles.themeContainer}>
+              {optionThemes && (
+                <div
+                  className={styles.optionTheme}
+                  style={{
+                    backgroundColor: `${
+                      findValueData(value).length != 0
+                        ? findValueData(value)[0].colorHex
+                        : ""
+                    }`,
+                  }}
+                ></div>
+              )}
+              <span>{findValueData(value).value || value}</span>
+            </div>
+          ) : (
+            placeholder
+          )}
+        </span>
         <div className={styles.arrowContainer}>
           <IconCaretDown />
         </div>
@@ -41,7 +67,7 @@ export function DropdownMenu({
                   <div
                     className={styles.optionTheme}
                     style={{
-                      backgroundColor: `${option.value}`,
+                      backgroundColor: `${option.colorHex}`,
                       opacity: usedOptions.includes(option.value) ? "50%" : "",
                     }}
                   ></div>
