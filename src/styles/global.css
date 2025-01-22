@@ -48,7 +48,7 @@ p {
 
 body {
   font-size: var(--font-size-default);
-
+  font-family: var(--font-family-default);
   color: var(--color-text-default);
 }
 

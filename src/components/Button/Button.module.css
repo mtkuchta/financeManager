@@ -1,7 +1,6 @@
 .button {
   height: 53px;
   width: 155px;
-  /* background-color: var(--color-grey-900); */
   background: linear-gradient(
       0deg,
       var(--color-grey-900),
@@ -15,11 +14,11 @@
   border: none;
   border-radius: 8px;
   transition: 0.4s;
+  margin: 0;
 }
 
 @media (min-width: 1024px) {
-  button:hover {
-    /* background-color: var(--color-grey-500); */
+  .button:hover {
     background: linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.2),
