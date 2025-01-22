@@ -19,7 +19,7 @@ export function BudgetTransactions({ budgetTransactions }) {
     } else {
       setVisibleTransactions(budgetTransactions.slice(0, 3));
     }
-  }, [isAllTransactionsVisible]);
+  }, [isAllTransactionsVisible, budgetTransactions]);
 
   const handleShowTransactions = () => {
     setIsAllTransactionsVisible(!isAllTransactionsVisible);
@@ -44,7 +44,10 @@ export function BudgetTransactions({ budgetTransactions }) {
       </header>
       <ul>
         {visibleTransactions.map((transaction) => (
-          <li key={transaction.name} className={styles.transaction}>
+          <li
+            key={`transaction_${transaction.name}`}
+            className={styles.transaction}
+          >
             <p>{transaction.name}</p>
             <div className={styles.transactionDetails}>
               <p>{formatAmount(transaction.amount)}</p>

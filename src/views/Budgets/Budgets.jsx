@@ -7,6 +7,7 @@ import { Budget } from "../../components/Budget/Budget";
 import { BudgetsSummary } from "../../components/BudgetsSummary/BudgetsSummary";
 import { Button } from "../../components/Button/Button";
 import { Modal } from "../../components/Modal/Modal";
+import { NewBudgetForm } from "../../components/NewBudgetForm/NewBudgetForm";
 
 export function Budgets() {
   const { budgets, transactions, handleDeleteBudget } =
@@ -25,7 +26,7 @@ export function Budgets() {
         <BudgetsSummary budgets={budgets} transactions={transactions} />
         {budgets.map((budget) => (
           <Budget
-            key={budget.category}
+            key={`budget_${budget.category}`}
             budget={budget}
             budgetTransactions={transactions.filter(
               (transaction) => transaction.category === budget.category
@@ -34,11 +35,13 @@ export function Budgets() {
           />
         ))}
       </div>
-      <Modal
-        title={"Add New Budget"}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-      />
+      <Modal title={"Add New Budget"} isOpen={isModalOpen} onClose={closeModal}>
+        <p className={styles.modalText}>
+          Choose a category to set a spending budget. These categories can help
+          you monitor spending.
+        </p>
+        <NewBudgetForm />
+      </Modal>
     </div>
   );
 }

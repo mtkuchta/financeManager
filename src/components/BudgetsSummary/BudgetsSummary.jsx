@@ -6,8 +6,6 @@ import { formatAmount } from "../../assets/helpers/formatAmount";
 import { BudgetsChart } from "../BudgetsChart/BudgetsChart";
 
 export function BudgetsSummary({ budgets, transactions }) {
-  console.log(budgets);
-
   return (
     <BudgetContainer>
       <BudgetsChart budgets={budgets} transactions={transactions} />
