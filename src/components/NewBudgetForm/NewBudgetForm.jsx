@@ -8,13 +8,9 @@ import { useContext } from "react";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { themeColors } from "../../assets/constants/themeColors";
 
-export function NewBudgetForm() {
+export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
   const { register, control, handleSubmit } = useForm();
-  const { budgets } = useContext(UserDataContext);
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const { budgets, setBudgets } = useContext(UserDataContext);
 
   const checkUsedCategories = () => {
     const usedBudgets = [];
@@ -36,13 +32,31 @@ export function NewBudgetForm() {
     return usedThemes;
   };
 
+  const handleAddNewBudget = (newBudgetData) => {
+    const newBudgetTheme = themeColors.filter(
+      (theme) => theme.value === newBudgetData.theme
+    )[0].colorHex;
+    const newBudget = {
+      category: newBudgetData.budgetCategory,
+      maximum: Number(newBudgetData.maximumSpend),
+      theme: newBudgetTheme,
+    };
+    setBudgets((prev) => [...prev, newBudget]);
+    closeModal();
+  };
+
+  const onSubmit = (data) => {
+    console.log(data);
+    handleAddNewBudget(data);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
       <label htmlFor="budgetCategory" className={styles.labelNewBudget}>
         Budget Category
       </label>
       <Controller
-        name="budgetCategorySelect"
+        name="budgetCategory"
         control={control}
         defaultValue=""
         rules={{ required: "This field is required" }}

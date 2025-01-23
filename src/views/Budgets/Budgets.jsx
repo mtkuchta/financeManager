@@ -40,7 +40,7 @@ export function Budgets() {
           Choose a category to set a spending budget. These categories can help
           you monitor spending.
         </p>
-        <NewBudgetForm />
+        <NewBudgetForm closeModal={closeModal} />
       </Modal>
     </div>
   );
