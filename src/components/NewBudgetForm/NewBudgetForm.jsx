@@ -7,10 +7,17 @@ import { Button } from "../Button/Button";
 import { useContext } from "react";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { themeColors } from "../../assets/constants/themeColors";
+import { findThemeColorName } from "../../assets/helpers/findThemeColorName";
 
 export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
-  const { register, control, handleSubmit } = useForm();
-  const { budgets, setBudgets } = useContext(UserDataContext);
+  const { register, control, handleSubmit } = useForm({
+    defaultValues: {
+      budgetCategory: budgetToEdit ? budgetToEdit.category : "",
+      maximumSpend: budgetToEdit ? budgetToEdit.maximum : "",
+      theme: budgetToEdit ? findThemeColorName(budgetToEdit.theme) : "",
+    },
+  });
+  const { budgets, addBudget } = useContext(UserDataContext);
 
   const checkUsedCategories = () => {
     const usedBudgets = [];
@@ -33,15 +40,7 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
   };
 
   const handleAddNewBudget = (newBudgetData) => {
-    const newBudgetTheme = themeColors.filter(
-      (theme) => theme.value === newBudgetData.theme
-    )[0].colorHex;
-    const newBudget = {
-      category: newBudgetData.budgetCategory,
-      maximum: Number(newBudgetData.maximumSpend),
-      theme: newBudgetTheme,
-    };
-    setBudgets((prev) => [...prev, newBudget]);
+    addBudget(newBudgetData);
     closeModal();
   };
 
@@ -101,7 +100,6 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
           />
         )}
       />
-      {/* <button type="submit">submit</button> */}
       <Button text="Add budget" type="submit" isWide />
     </form>
   );

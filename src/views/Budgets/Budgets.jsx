@@ -10,12 +10,17 @@ import { Modal } from "../../components/Modal/Modal";
 import { NewBudgetForm } from "../../components/NewBudgetForm/NewBudgetForm";
 
 export function Budgets() {
-  const { budgets, transactions, handleDeleteBudget } =
+  const { budgets, budgetToEdit, transactions, deleteBudget, setBudgetToEdit } =
     useContext(UserDataContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const handleEditBudget = (e, budgetToEdit) => {
+    setBudgetToEdit(budgetToEdit);
+    setIsModalOpen(true);
+  };
 
   return (
     <div>
@@ -31,7 +36,8 @@ export function Budgets() {
             budgetTransactions={transactions.filter(
               (transaction) => transaction.category === budget.category
             )}
-            deleteBudget={handleDeleteBudget}
+            deleteBudget={deleteBudget}
+            editBudget={(e) => handleEditBudget(e, budget)}
           />
         ))}
       </div>
@@ -40,7 +46,7 @@ export function Budgets() {
           Choose a category to set a spending budget. These categories can help
           you monitor spending.
         </p>
-        <NewBudgetForm closeModal={closeModal} />
+        <NewBudgetForm closeModal={closeModal} budgetToEdit={budgetToEdit} />
       </Modal>
     </div>
   );

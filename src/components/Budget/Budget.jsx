@@ -10,7 +10,12 @@ import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { Button } from "../Button/Button";
 
-export function Budget({ budget, budgetTransactions, deleteBudget }) {
+export function Budget({
+  budget,
+  budgetTransactions,
+  deleteBudget,
+  editBudget,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -26,7 +31,14 @@ export function Budget({ budget, budgetTransactions, deleteBudget }) {
           <IconEllipsis onClick={() => setIsMenuOpen(!isMenuOpen)} />
           {isMenuOpen && (
             <ul className={styles.budgetOptions}>
-              <li className={styles.budgetOption}>Edit budget</li>
+              <li
+                className={styles.budgetOption}
+                onClick={(e) => {
+                  editBudget(e), setIsMenuOpen(false);
+                }}
+              >
+                Edit budget
+              </li>
               <li
                 className={styles.budgetOption}
                 onClick={() => {
