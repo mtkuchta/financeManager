@@ -17,7 +17,7 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
       theme: budgetToEdit ? findThemeColorName(budgetToEdit.theme) : "",
     },
   });
-  const { budgets, addBudget } = useContext(UserDataContext);
+  const { budgets, addBudget, editBudget } = useContext(UserDataContext);
 
   const checkUsedCategories = () => {
     const usedBudgets = [];
@@ -44,9 +44,17 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
     closeModal();
   };
 
+  const handleEditBudget = (budgetData) => {
+    editBudget(budgetData);
+    closeModal();
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
-    handleAddNewBudget(data);
+    if (budgetToEdit) {
+      handleEditBudget(data);
+    } else {
+      handleAddNewBudget(data);
+    }
   };
 
   return (
@@ -100,7 +108,11 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
           />
         )}
       />
-      <Button text="Add budget" type="submit" isWide />
+      <Button
+        text={budgetToEdit ? "Save Changes" : "Add budget"}
+        type="submit"
+        isWide
+      />
     </form>
   );
 }

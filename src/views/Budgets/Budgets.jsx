@@ -22,10 +22,15 @@ export function Budgets() {
     setIsModalOpen(true);
   };
 
+  const handleAddBudget = () => {
+    setBudgetToEdit(null);
+    openModal();
+  };
+
   return (
     <div>
       <ContentHeader>
-        <Button text={"+ Add New Budget"} onClick={openModal} />
+        <Button text={"+ Add New Budget"} onClick={handleAddBudget} />
       </ContentHeader>
       <div className={styles.budgetsContainer}>
         <BudgetsSummary budgets={budgets} transactions={transactions} />

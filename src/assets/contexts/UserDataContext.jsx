@@ -20,6 +20,22 @@ export const UserDataProvider = ({ children }) => {
     setBudgets((prev) => [...prev, newBudget]);
   };
 
+  const editBudget = (newData) => {
+    setBudgets((prevItems) =>
+      prevItems.map((item) =>
+        item.category === budgetToEdit.category
+          ? {
+              ...item,
+              category: newData.budgetCategory,
+              maximum: Number(newData.maximumSpend),
+              theme: findThemeHex(newData.theme),
+            }
+          : item
+      )
+    );
+    setBudgetToEdit(null);
+  };
+
   const deleteBudget = (budgetToDelete) => {
     const updatedBudgets = budgets.filter(
       (budget) => budget.category !== budgetToDelete
@@ -41,6 +57,7 @@ export const UserDataProvider = ({ children }) => {
         setPots,
         setTransactions,
         addBudget,
+        editBudget,
         deleteBudget,
       }}
     >
