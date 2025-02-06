@@ -7,3 +7,12 @@
   border-radius: 12px;
   margin: 12px 0;
 }
+
+@media (min-width: 1024px) {
+  .budgetContainer {
+    grid-column: 2;
+  }
+  .budgetContainer:first-child {
+    grid-column: 1;
+  }
+}

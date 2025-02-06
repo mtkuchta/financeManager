@@ -33,18 +33,22 @@ export function Budgets() {
         <Button text={"+ Add New Budget"} onClick={handleAddBudget} />
       </ContentHeader>
       <div className={styles.budgetsContainer}>
-        <BudgetsSummary budgets={budgets} transactions={transactions} />
-        {budgets.map((budget) => (
-          <Budget
-            key={`budget_${budget.category}`}
-            budget={budget}
-            budgetTransactions={transactions.filter(
-              (transaction) => transaction.category === budget.category
-            )}
-            deleteBudget={deleteBudget}
-            editBudget={(e) => handleEditBudget(e, budget)}
-          />
-        ))}
+        <div>
+          <BudgetsSummary budgets={budgets} transactions={transactions} />
+        </div>
+        <div>
+          {budgets.map((budget) => (
+            <Budget
+              key={`budget_${budget.category}`}
+              budget={budget}
+              budgetTransactions={transactions.filter(
+                (transaction) => transaction.category === budget.category
+              )}
+              deleteBudget={deleteBudget}
+              editBudget={(e) => handleEditBudget(e, budget)}
+            />
+          ))}
+        </div>
       </div>
       <Modal title={"Add New Budget"} isOpen={isModalOpen} onClose={closeModal}>
         <p className={styles.modalText}>

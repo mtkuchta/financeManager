@@ -71,3 +71,12 @@
   width: 100%;
   border: none;
 }
+@media (min-width: 1024px) {
+  .menuEllipsis {
+    cursor: pointer;
+  }
+
+  .budgetOption {
+    cursor: pointer;
+  }
+}

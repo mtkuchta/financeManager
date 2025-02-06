@@ -1,5 +1,6 @@
 import styles from "./Modal.module.css";
 import ReactDom from "react-dom";
+import { ReactComponent as IconCloseModal } from "../../assets/icons/icon-close-Modal.svg";
 
 export function Modal({ title, isOpen, onClose, children }) {
   if (!isOpen) return null;
@@ -10,7 +11,7 @@ export function Modal({ title, isOpen, onClose, children }) {
         <div className={styles.modalHeader}>
           <p className={styles.modalTitle}>{title}</p>
           <button className={styles.closeButton} onClick={onClose}>
-            X
+            <IconCloseModal />
           </button>
         </div>
         {children}

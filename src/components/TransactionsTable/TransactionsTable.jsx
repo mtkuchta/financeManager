@@ -44,7 +44,7 @@ export function TransactionsTable() {
   const { transactions } = useContext(UserDataContext);
   const { currentSort, setCurrentSort } = useState("Latest");
 
-  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
 

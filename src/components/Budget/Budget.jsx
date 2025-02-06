@@ -28,7 +28,10 @@ export function Budget({
         ></div>
         <span className={styles.budgetName}>{budget.category}</span>
         <div className={styles.menuContainer}>
-          <IconEllipsis onClick={() => setIsMenuOpen(!isMenuOpen)} />
+          <IconEllipsis
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={styles.menuEllipsis}
+          />
           {isMenuOpen && (
             <ul className={styles.budgetOptions}>
               <li
