@@ -3,12 +3,13 @@ import { ReactComponent as IconEllipsis } from "../../assets/icons/icon-ellipsis
 import { BudgetStatusBar } from "../BudgetStatusBar/BudgetStatusBar";
 import { BudgetSummary } from "../BudgetSummary/BudgetSummary";
 import { BudgetTransactions } from "../BudgetTransactions/BudgetTransactions";
-import { BudgetContainer } from "../BudgetContainer/BudgetContainer";
+import { ItemContainer } from "../ItemContainer/ItemContainer";
 
 import { calculateCategorySpent } from "../../assets/helpers/calculateCategorySpent";
 import { useState } from "react";
 import { Modal } from "../Modal/Modal";
 import { Button } from "../Button/Button";
+import { HeaderWithTheme } from "../HeaderWithTheme/HeaderWithTheme";
 
 export function Budget({
   budget,
@@ -20,13 +21,9 @@ export function Budget({
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <BudgetContainer>
+    <ItemContainer>
       <div className={styles.budgetHeader}>
-        <div
-          className={styles.budgetTheme}
-          style={{ backgroundColor: budget.theme }}
-        ></div>
-        <span className={styles.budgetName}>{budget.category}</span>
+        <HeaderWithTheme theme={budget.theme} text={budget.category} />
         <div className={styles.menuContainer}>
           <IconEllipsis
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,6 +87,6 @@ export function Budget({
           </button>
         </div>
       </Modal>
-    </BudgetContainer>
+    </ItemContainer>
   );
 }

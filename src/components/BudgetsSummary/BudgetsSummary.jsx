@@ -1,4 +1,4 @@
-import { BudgetContainer } from "../BudgetContainer/BudgetContainer";
+import { ItemContainer } from "../ItemContainer/ItemContainer";
 import styles from "./BudgetsSummary.module.css";
 
 import { calculateCategorySpent } from "../../assets/helpers/calculateCategorySpent";
@@ -7,7 +7,7 @@ import { BudgetsChart } from "../BudgetsChart/BudgetsChart";
 
 export function BudgetsSummary({ budgets, transactions }) {
   return (
-    <BudgetContainer>
+    <ItemContainer>
       <BudgetsChart budgets={budgets} transactions={transactions} />
       <span className={styles.title}>Spending summary</span>
       {budgets.map((budget) => (
@@ -33,6 +33,6 @@ export function BudgetsSummary({ budgets, transactions }) {
           </div>
         </div>
       ))}
-    </BudgetContainer>
+    </ItemContainer>
   );
 }

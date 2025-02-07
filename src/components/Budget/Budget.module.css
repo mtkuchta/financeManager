@@ -6,21 +6,6 @@
   margin-bottom: 15px;
 }
 
-.budgetTheme {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-}
-
-.budgetName {
-  color: var(--color-grey-900);
-  font-size: var(--font-size-preset-2);
-  font-weight: bold;
-  line-height: 24px;
-  flex-grow: 2;
-  padding-left: 10px;
-}
-
 .menuContainer {
   position: relative;
   z-index: 2;
