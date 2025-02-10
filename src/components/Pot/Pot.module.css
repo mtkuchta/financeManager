@@ -1,0 +1,47 @@
+.potSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.spanText {
+  font-size: var(--font-size-preset-4);
+  color: var(--color-grey-500);
+}
+
+.spanAmount {
+  font-size: var(--font-size-preset-1);
+}
+
+.potProgressBar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--color-beige-100);
+  border-radius: 4px;
+}
+
+.potProgressBarValue {
+  border-radius: 4px;
+  width: 20%;
+  height: 8px;
+  background-color: var(--pot-color);
+}
+
+.progressBarDescription {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 13px 0 13px 0;
+  color: var(--color-grey-500);
+  font-size: var(--font-size-preset-5);
+}
+
+.progressBarPercent {
+  font-weight: bold;
+}
+
+.potButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
