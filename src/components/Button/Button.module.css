@@ -1,12 +1,6 @@
 .button {
   height: 53px;
   width: 155px;
-  background: linear-gradient(
-      0deg,
-      var(--color-grey-900),
-      var(--color-grey-900)
-    ),
-    var(--color-grey-900);
   color: var(--color-white);
   font-size: var(--font-size-preset-4);
   font-weight: bold;
@@ -17,12 +11,37 @@
   margin: 0;
 }
 
+.primary {
+  background-color: var(--color-grey-900);
+  color: var(--color-white);
+}
+
+.secondary {
+  background-color: var(--color-beige-100);
+  color: var(--color-grey-900);
+}
+
+.warning {
+  background-color: var(--color-red);
+}
+
+.normal {
+  width: 155px;
+}
+
+.small {
+  width: 140px;
+}
+
+.large {
+  width: 100%;
+}
+/* .isSmall {
+  width: 143px;
+} */
+
 @media (min-width: 1024px) {
   .button:hover {
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.2),
-      rgba(255, 255, 255, 0.2)
-    );
+    opacity: 80%;
   }
 }

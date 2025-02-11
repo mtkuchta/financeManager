@@ -1,14 +1,10 @@
 import styles from "./Button.module.css";
 
-export function Button({ text, onClick, isRed = false, isWide = false }) {
+export function Button({ text, onClick, color = "primary", size = "normal" }) {
   return (
     <button
-      className={styles.button}
+      className={`${styles.button} ${styles[color]} ${styles[size]}`}
       onClick={onClick}
-      style={{
-        backgroundColor: isRed ? "var(--color-red)" : "var(--color-grey-900)",
-        width: isWide ? "100%" : "",
-      }}
     >
       {text}
     </button>

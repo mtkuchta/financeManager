@@ -31,8 +31,8 @@ export function Pot({ pot }) {
         <span>{`Target of ${pot.target}`}</span>
       </div>
       <div className={styles.potButtonsContainer}>
-        <Button text="+Add money" color="secondary" />
-        <Button text="Withdraw" color="secondary" />
+        <Button text="+Add money" color="secondary" size="small" />
+        <Button text="Withdraw" color="secondary" size="small" />
       </div>
     </ItemContainer>
   );

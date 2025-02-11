@@ -111,7 +111,7 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
       <Button
         text={budgetToEdit ? "Save Changes" : "Add budget"}
         type="submit"
-        isWide
+        size="large"
       />
     </form>
   );

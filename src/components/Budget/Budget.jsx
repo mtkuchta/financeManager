@@ -75,8 +75,8 @@ export function Budget({
         <div className={styles.modalButtonsContainer}>
           <Button
             text={"Yes,Confirm Deletion"}
-            isRed={true}
-            isWide={true}
+            color="warning"
+            size="large"
             onClick={() => deleteBudget(budget.category)}
           />
           <button
