@@ -17,40 +17,25 @@ export function Budget({
   deleteBudget,
   editBudget,
 }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditBudget = (e) => {
+    editBudget(e);
+  };
+
+  const handleDeleteBudget = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <ItemContainer>
       <div className={styles.budgetHeader}>
-        <HeaderWithTheme theme={budget.theme} text={budget.category} />
-        <div className={styles.menuContainer}>
-          <IconEllipsis
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={styles.menuEllipsis}
-          />
-          {isMenuOpen && (
-            <ul className={styles.budgetOptions}>
-              <li
-                className={styles.budgetOption}
-                onClick={(e) => {
-                  editBudget(e), setIsMenuOpen(false);
-                }}
-              >
-                Edit budget
-              </li>
-              <li
-                className={styles.budgetOption}
-                onClick={() => {
-                  setIsModalOpen(true);
-                  setIsMenuOpen(false);
-                }}
-              >
-                Delete budget
-              </li>
-            </ul>
-          )}
-        </div>
+        <HeaderWithTheme
+          theme={budget.theme}
+          text={budget.category}
+          handleDeleteItem={handleDeleteBudget}
+          handleEditItem={handleEditBudget}
+        />
       </div>
       <BudgetStatusBar
         maximum={budget.maximum}
