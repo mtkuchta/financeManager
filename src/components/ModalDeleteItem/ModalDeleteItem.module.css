@@ -1,0 +1,16 @@
+.modalWarning {
+  color: var(--color-grey-500);
+  font-size: var(--font-size-preset-4);
+}
+
+.modalButtonsContainer {
+  margin-top: 20px;
+}
+
+.modalRejectButton {
+  height: 53px;
+  background-color: transparent;
+  color: var(--color-grey-500);
+  width: 100%;
+  border: none;
+}
