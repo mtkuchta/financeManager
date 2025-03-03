@@ -15,7 +15,10 @@ export function Budgets() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setBudgetToEdit(null);
+  };
 
   const handleEditBudget = (e, budgetToEdit) => {
     setBudgetToEdit(budgetToEdit);
@@ -50,11 +53,16 @@ export function Budgets() {
           ))}
         </div>
       </div>
-      <Modal title={"Add New Budget"} isOpen={isModalOpen} onClose={closeModal}>
-        <p className={styles.modalText}>
-          Choose a category to set a spending budget. These categories can help
-          you monitor spending.
-        </p>
+      <Modal
+        title={"Add New Budget"}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        text={
+          budgetToEdit
+            ? "As your budgets change, feel free to update your spending limits."
+            : "Choose a category to set a spending budget. These categories can helyou monitor spending."
+        }
+      >
         <NewBudgetForm closeModal={closeModal} budgetToEdit={budgetToEdit} />
       </Modal>
     </div>

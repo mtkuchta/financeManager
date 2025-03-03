@@ -2,7 +2,7 @@ import styles from "./Modal.module.css";
 import ReactDom from "react-dom";
 import { ReactComponent as IconCloseModal } from "../../assets/icons/icon-close-Modal.svg";
 
-export function Modal({ title, isOpen, onClose, children }) {
+export function Modal({ title, isOpen, onClose, children, text }) {
   if (!isOpen) return null;
 
   return ReactDom.createPortal(
@@ -14,6 +14,7 @@ export function Modal({ title, isOpen, onClose, children }) {
             <IconCloseModal />
           </button>
         </div>
+        {text && <p className={styles.modalText}>{text}</p>}
         {children}
       </div>
     </div>,
