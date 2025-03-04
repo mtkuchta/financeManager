@@ -7,6 +7,7 @@ export function HeaderWithTheme({
   text,
   handleEditItem,
   handleDeleteItem,
+  itemType,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -33,7 +34,7 @@ export function HeaderWithTheme({
                 setIsMenuOpen(false);
               }}
             >
-              Edit budget
+              {`Edit ${itemType}`}
             </li>
             <li
               className={styles.itemOption}
@@ -42,7 +43,7 @@ export function HeaderWithTheme({
                 setIsMenuOpen(false);
               }}
             >
-              Delete budget
+              {`Delete ${itemType}`}
             </li>
           </ul>
         )}

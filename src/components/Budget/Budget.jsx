@@ -33,6 +33,7 @@ export function Budget({
           text={budget.category}
           handleDeleteItem={handleDeleteBudget}
           handleEditItem={handleEditBudget}
+          itemType="budget"
         />
       </div>
       <BudgetStatusBar
