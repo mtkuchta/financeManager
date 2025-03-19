@@ -6,23 +6,11 @@ import { useForm, Controller } from "react-hook-form";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { Button } from "../Button/Button";
+import { checkUsedThemes } from "../../assets/helpers/checkUsedThemes";
 
 export function NewPotForm({ potToEdit = null, closeModal }) {
   const { register, control, handleSubmit } = useForm();
   const { pots, addPot } = useContext(UserDataContext);
-
-  const checkUsedThemes = () => {
-    const usedThemes = [];
-
-    pots.map((budget) => {
-      const theme = themeColors.filter(
-        (theme) => theme.colorHex === budget.theme
-      );
-      usedThemes.push(theme[0].value);
-    });
-
-    return usedThemes;
-  };
 
   const handleAddNewPot = (newPotData) => {
     addPot(newPotData);
@@ -73,7 +61,7 @@ export function NewPotForm({ potToEdit = null, closeModal }) {
             value={value}
             onChange={onChange}
             options={themeColors}
-            usedOptions={checkUsedThemes()}
+            usedOptions={checkUsedThemes(pots)}
             placeholder="Select Theme"
             optionThemes={true}
           />

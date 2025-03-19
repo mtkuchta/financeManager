@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { themeColors } from "../../assets/constants/themeColors";
 import { findThemeColorName } from "../../assets/helpers/findThemeColorName";
+import { checkUsedThemes } from "../../assets/helpers/checkUsedThemes";
 
 export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
   const { register, control, handleSubmit } = useForm({
@@ -24,19 +25,6 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
 
     budgets.map((budget) => usedBudgets.push(budget.category));
     return usedBudgets;
-  };
-
-  const checkUsedThemes = () => {
-    const usedThemes = [];
-
-    budgets.map((budget) => {
-      const theme = themeColors.filter(
-        (theme) => theme.colorHex === budget.theme
-      );
-      usedThemes.push(theme[0].value);
-    });
-
-    return usedThemes;
   };
 
   const handleAddNewBudget = (newBudgetData) => {
@@ -102,7 +90,7 @@ export function NewBudgetForm({ budgetToEdit = null, closeModal }) {
             value={value}
             onChange={onChange}
             options={themeColors}
-            usedOptions={checkUsedThemes()}
+            usedOptions={checkUsedThemes(budgets)}
             placeholder="Select Theme"
             optionThemes={true}
           />
