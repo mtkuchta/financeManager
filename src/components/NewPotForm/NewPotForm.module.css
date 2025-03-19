@@ -1,0 +1,19 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.labelNewPot {
+  color: var(--color-grey-500);
+  font-size: var(--font-size-preset-5);
+  font-weight: bold;
+}
+
+.inputText {
+  height: 45px;
+  width: 100%;
+  border: 1px solid var(--color-beige-500);
+  border-radius: 8px;
+  padding: 0 20px;
+  margin: 5px 0 15px 0;
+}

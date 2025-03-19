@@ -43,6 +43,21 @@ export const UserDataProvider = ({ children }) => {
     setBudgets(updatedBudgets);
   };
 
+  const addPot = (newPotData) => {
+    const newPot = {
+      name: newPotData.potName,
+      target: Number(newPotData.target),
+      theme: findThemeHex(newPotData.theme),
+      total: 0,
+    };
+    setPots((prev) => [...prev, newPot]);
+  };
+
+  const deletePot = (potToDelete) => {
+    const updatedPots = pots.filter((pot) => pot.name !== potToDelete);
+    setPots(updatedPots);
+  };
+
   return (
     <UserDataContext.Provider
       value={{
@@ -59,6 +74,8 @@ export const UserDataProvider = ({ children }) => {
         addBudget,
         editBudget,
         deleteBudget,
+        addPot,
+        deletePot,
       }}
     >
       {children}
