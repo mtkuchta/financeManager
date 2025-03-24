@@ -9,18 +9,28 @@ import { Button } from "../Button/Button";
 import { checkUsedThemes } from "../../assets/helpers/checkUsedThemes";
 
 export function NewPotForm({ potToEdit = null, closeModal }) {
-  const { register, control, handleSubmit } = useForm();
-  const { pots, addPot } = useContext(UserDataContext);
+  const { register, control, handleSubmit } = useForm({
+    defaultValues: {
+      potName: potToEdit ? potToEdit.name : "",
+      target: potToEdit ? potToEdit.target : "",
+      theme: potToEdit ? findThemeColorName(potToEdit.theme) : "",
+    },
+  });
+  const { pots, addPot, editPot } = useContext(UserDataContext);
 
   const handleAddNewPot = (newPotData) => {
     addPot(newPotData);
     closeModal();
   };
 
+  const handleEditPot = (potData) => {
+    editPot(potData);
+    closeModal();
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
     if (potToEdit) {
-      // handleEditBudget(data);
+      handleEditPot(data);
     } else {
       handleAddNewPot(data);
     }

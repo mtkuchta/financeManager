@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import styles from "./Pot.module.css";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 
-export function Pot({ pot }) {
+export function Pot({ pot, editPot }) {
   const { pots, deletePot } = useContext(UserDataContext);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -18,6 +18,10 @@ export function Pot({ pot }) {
     setIsDeleteModalOpen(true);
   };
 
+  const handleEditPot = (e) => {
+    editPot(e);
+  };
+
   return (
     <ItemContainer>
       <HeaderWithTheme
@@ -25,6 +29,7 @@ export function Pot({ pot }) {
         theme={pot.theme}
         itemType="pot"
         handleDeleteItem={handleDeletePot}
+        handleEditItem={handleEditPot}
       />
       <div className={styles.potSummary}>
         <span className={styles.spanText}>Total Saved</span>

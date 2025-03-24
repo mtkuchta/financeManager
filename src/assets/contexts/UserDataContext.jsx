@@ -9,6 +9,7 @@ export const UserDataProvider = ({ children }) => {
   const [budgets, setBudgets] = useState(data.budgets);
   const [budgetToEdit, setBudgetToEdit] = useState(null);
   const [pots, setPots] = useState(data.pots);
+  const [potToEdit, setPotToEdit] = useState(null);
   const [transactions, setTransactions] = useState(data.transactions);
 
   const addBudget = (newBudgetData) => {
@@ -53,6 +54,22 @@ export const UserDataProvider = ({ children }) => {
     setPots((prev) => [...prev, newPot]);
   };
 
+  const editPot = (newData) => {
+    setPots((prevItems) =>
+      prevItems.map((item) =>
+        item.name === potToEdit.name
+          ? {
+              ...item,
+              name: newData.potName,
+              target: Number(newData.target),
+              theme: findThemeHex(newData.theme),
+            }
+          : item
+      )
+    );
+    setPotToEdit(null);
+  };
+
   const deletePot = (potToDelete) => {
     const updatedPots = pots.filter((pot) => pot.name !== potToDelete);
     setPots(updatedPots);
@@ -65,6 +82,7 @@ export const UserDataProvider = ({ children }) => {
         budgets,
         budgetToEdit,
         pots,
+        potToEdit,
         transactions,
         setBalance,
         setBudgets,
@@ -75,6 +93,8 @@ export const UserDataProvider = ({ children }) => {
         editBudget,
         deleteBudget,
         addPot,
+        setPotToEdit,
+        editPot,
         deletePot,
       }}
     >

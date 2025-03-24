@@ -7,11 +7,17 @@ import { Modal } from "../../components/Modal/Modal";
 import { NewPotForm } from "../../components/NewPotForm/NewPotForm";
 
 export function Pots() {
-  const { pots, setPots } = useContext(UserDataContext);
+  const { pots, setPots, setPotToEdit, potToEdit } =
+    useContext(UserDataContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleEditPot = (e, potToEdit) => {
+    setPotToEdit(potToEdit);
+    setIsModalOpen(true);
   };
 
   return (
@@ -21,7 +27,11 @@ export function Pots() {
       </ContentHeader>
       <div>
         {pots.map((pot) => (
-          <Pot key={`pot_${pot.name}`} pot={pot} />
+          <Pot
+            key={`pot_${pot.name}`}
+            pot={pot}
+            editPot={(e) => handleEditPot(e, pot)}
+          />
         ))}
       </div>
       <Modal
@@ -30,7 +40,7 @@ export function Pots() {
         onClose={closeModal}
         text="Create a pot to set savings targets. These can help keep you on track as you save for special purchases."
       >
-        <NewPotForm closeModal={closeModal} />
+        <NewPotForm closeModal={closeModal} potToEdit={potToEdit} />
       </Modal>
     </div>
   );
