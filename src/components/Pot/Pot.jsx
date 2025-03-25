@@ -5,10 +5,13 @@ import { ModalDeleteItem } from "../ModalDeleteItem/ModalDeleteItem";
 import { useContext, useState } from "react";
 import styles from "./Pot.module.css";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
+import { Modal } from "../Modal/Modal";
+import { PotOperationsForm } from "../PotOperationsForm/PotOperationsForm";
 
 export function Pot({ pot, editPot }) {
   const { pots, deletePot } = useContext(UserDataContext);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const calculateProgressBarValue = () => {
     return ((pot.total * 100) / pot.target).toFixed(2);
@@ -51,7 +54,12 @@ export function Pot({ pot, editPot }) {
         <span>{`Target of ${pot.target}`}</span>
       </div>
       <div className={styles.potButtonsContainer}>
-        <Button text="+Add money" color="secondary" size="small" />
+        <Button
+          text="+Add money"
+          color="secondary"
+          size="small"
+          onClick={() => setIsAddModalOpen(true)}
+        />
         <Button text="Withdraw" color="secondary" size="small" />
       </div>
       <ModalDeleteItem
@@ -60,6 +68,14 @@ export function Pot({ pot, editPot }) {
         itemName={pot.name}
         deleteHandler={deletePot}
       />
+      <Modal
+        title={`Add to '${pot.name}'`}
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        text="Add money to your pot to keep it separate from your main balance. As soon as you add this money, it will be deducted from your current balance."
+      >
+        <PotOperationsForm pot={pot} />
+      </Modal>
     </ItemContainer>
   );
 }
