@@ -70,6 +70,19 @@ export const UserDataProvider = ({ children }) => {
     setPotToEdit(null);
   };
 
+  const addToPot = (pot, addAmount) => {
+    setPots((prevItems) =>
+      prevItems.map((item) =>
+        item.name === pot.name
+          ? {
+              ...item,
+              total: pot.total + addAmount,
+            }
+          : item
+      )
+    );
+  };
+
   const deletePot = (potToDelete) => {
     const updatedPots = pots.filter((pot) => pot.name !== potToDelete);
     setPots(updatedPots);
@@ -95,6 +108,7 @@ export const UserDataProvider = ({ children }) => {
         addPot,
         setPotToEdit,
         editPot,
+        addToPot,
         deletePot,
       }}
     >
