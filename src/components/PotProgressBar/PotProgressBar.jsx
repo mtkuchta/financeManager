@@ -1,6 +1,6 @@
 import styles from "./PotProgressBar.module.css";
 
-export function PotProgressBar({ pot, addValue }) {
+export function PotProgressBar({ pot, addValue = 0 }) {
   const calculateProgressBarValue = () => {
     return ((pot.total * 100) / pot.target).toFixed(2);
   };
@@ -17,10 +17,6 @@ export function PotProgressBar({ pot, addValue }) {
   };
   return (
     <div className={styles.progressBarContainer}>
-      <div className={styles.descriptionContainer}>
-        <span className={styles.operationsText}>New Amount</span>
-        <span className={styles.newAmount}>{`$${pot.total + addValue}`}</span>
-      </div>
       <div className={styles.progressBar}>
         <div
           className={styles.progressBarValue}
@@ -28,17 +24,20 @@ export function PotProgressBar({ pot, addValue }) {
             width: `${calculateProgressBarValue()}%`,
           }}
         ></div>
-        <div
-          className={styles.progressBarChange}
-          style={{
-            "--pot-color": pot.theme,
-            width: `${calculateProgressBarChange()}%`,
-          }}
-        ></div>
+        {addValue !== 0 && (
+          <div
+            className={styles.progressBarChange}
+            style={{
+              "--pot-color": pot.theme,
+              width: `${calculateProgressBarChange()}%`,
+            }}
+          ></div>
+        )}
       </div>
       <div className={styles.descriptionContainer}>
         <span
           className={styles.newAmountText}
+          style={{ color: addValue != 0 ? pot.theme : "" }}
         >{`${calculateNewProgress()}%`}</span>
         <span
           className={styles.operationsText}

@@ -42,5 +42,5 @@
 .newAmountText {
   font-size: var(--font-size-preset-5);
   font-weight: bold;
-  color: var(--color-green);
+  color: var(--color-grey-500);
 }

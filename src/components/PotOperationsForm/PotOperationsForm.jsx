@@ -1,6 +1,6 @@
 import styles from "./PotOperationsForm.module.css";
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { Button } from "../Button/Button";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { PotProgressBar } from "../PotProgressBar/PotProgressBar";
@@ -16,6 +16,12 @@ export function PotOperationsForm({ pot }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.descriptionContainer}>
+        <span className={styles.operationsText}>New Amount</span>
+        <span className={styles.newAmount}>{`$${
+          pot.total + watchAmount
+        }`}</span>
+      </div>
       <PotProgressBar pot={pot} addValue={watchAmount} />
       <label htmlFor="amount" className={styles.label}>
         Amount To Add

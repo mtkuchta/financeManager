@@ -32,7 +32,7 @@
   margin: 5px 0 15px 0;
 }
 
-.progressBar {
+/* .progressBar {
   width: 100%;
   height: 8px;
   display: flex;
@@ -52,7 +52,7 @@
   height: 8px;
   background-color: var(--pot-color);
   margin-left: 2px;
-}
+} */
 
 .newAmountText {
   font-size: var(--font-size-preset-5);

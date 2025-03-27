@@ -7,15 +7,12 @@ import styles from "./Pot.module.css";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { Modal } from "../Modal/Modal";
 import { PotOperationsForm } from "../PotOperationsForm/PotOperationsForm";
+import { PotProgressBar } from "../PotProgressBar/PotProgressBar";
 
 export function Pot({ pot, editPot }) {
   const { pots, deletePot } = useContext(UserDataContext);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  const calculateProgressBarValue = () => {
-    return ((pot.total * 100) / pot.target).toFixed(2);
-  };
 
   const handleDeletePot = () => {
     setIsDeleteModalOpen(true);
@@ -38,21 +35,8 @@ export function Pot({ pot, editPot }) {
         <span className={styles.spanText}>Total Saved</span>
         <span className={styles.spanAmount}>{`$${pot.total}`}</span>
       </div>
-      <div className={styles.potProgressBar}>
-        <div
-          className={styles.potProgressBarValue}
-          style={{
-            "--pot-color": pot.theme,
-            width: `${calculateProgressBarValue()}%`,
-          }}
-        ></div>
-      </div>
-      <div className={styles.progressBarDescription}>
-        <span
-          className={styles.progressBarPercent}
-        >{`${calculateProgressBarValue()}%`}</span>
-        <span>{`Target of ${pot.target}`}</span>
-      </div>
+
+      <PotProgressBar pot={pot} />
       <div className={styles.potButtonsContainer}>
         <Button
           text="+Add money"
