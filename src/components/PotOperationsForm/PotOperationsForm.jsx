@@ -1,17 +1,18 @@
 import styles from "./PotOperationsForm.module.css";
 import { useContext } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button } from "../Button/Button";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { PotProgressBar } from "../PotProgressBar/PotProgressBar";
 
-export function PotOperationsForm({ pot }) {
+export function PotOperationsForm({ pot, operationType, onClose }) {
   const { register, watch, handleSubmit } = useForm();
-  const { addToPot } = useContext(UserDataContext);
+  const { changePotTotal } = useContext(UserDataContext);
   const watchAmount = Number(watch("amount", 0));
 
   const onSubmit = (data) => {
-    addToPot(pot, Number(data.amount));
+    changePotTotal(pot, Number(data.amount), operationType);
+    onClose();
   };
 
   return (
@@ -19,12 +20,18 @@ export function PotOperationsForm({ pot }) {
       <div className={styles.descriptionContainer}>
         <span className={styles.operationsText}>New Amount</span>
         <span className={styles.newAmount}>{`$${
-          pot.total + watchAmount
+          operationType === "add"
+            ? pot.total + watchAmount
+            : pot.total - watchAmount
         }`}</span>
       </div>
-      <PotProgressBar pot={pot} addValue={watchAmount} />
+      <PotProgressBar
+        pot={pot}
+        amount={watchAmount}
+        operationType={operationType}
+      />
       <label htmlFor="amount" className={styles.label}>
-        Amount To Add
+        {operationType === "add" ? "Amount To Add" : "Amount to Withdraw"}
       </label>
       <input
         className={styles.inputText}
@@ -34,7 +41,11 @@ export function PotOperationsForm({ pot }) {
         placeholder="$ 400"
         {...register("amount")}
       />
-      <Button text="Confirm Addition" type="submit" size="large" />
+      <Button
+        text={operationType === "add" ? "Confirm Addition" : "Confirm Withdraw"}
+        type="submit"
+        size="large"
+      />
     </form>
   );
 }

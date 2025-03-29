@@ -70,13 +70,16 @@ export const UserDataProvider = ({ children }) => {
     setPotToEdit(null);
   };
 
-  const addToPot = (pot, addAmount) => {
+  const changePotTotal = (pot, amount, operationType) => {
     setPots((prevItems) =>
       prevItems.map((item) =>
         item.name === pot.name
           ? {
               ...item,
-              total: pot.total + addAmount,
+              total:
+                operationType === "add"
+                  ? pot.total + amount
+                  : pot.total - amount,
             }
           : item
       )
@@ -108,7 +111,7 @@ export const UserDataProvider = ({ children }) => {
         addPot,
         setPotToEdit,
         editPot,
-        addToPot,
+        changePotTotal,
         deletePot,
       }}
     >

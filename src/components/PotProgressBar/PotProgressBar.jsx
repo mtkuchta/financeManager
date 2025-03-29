@@ -1,19 +1,29 @@
 import styles from "./PotProgressBar.module.css";
 
-export function PotProgressBar({ pot, addValue = 0 }) {
+export function PotProgressBar({ pot, amount = 0, operationType }) {
   const calculateProgressBarValue = () => {
-    return ((pot.total * 100) / pot.target).toFixed(2);
+    if (operationType === "add") {
+      return ((pot.total * 100) / pot.target).toFixed(2);
+    }
+    return (((pot.total - amount) * 100) / pot.target).toFixed(2);
   };
 
   const calculateProgressBarChange = () => {
-    return (
-      (((pot.total + addValue) * 100) / pot.target).toFixed(2) -
-      calculateProgressBarValue()
-    );
+    if (operationType === "add") {
+      return (
+        (((pot.total + amount) * 100) / pot.target).toFixed(2) -
+        calculateProgressBarValue()
+      );
+    }
+
+    return ((amount * 100) / pot.target).toFixed();
   };
 
   const calculateNewProgress = () => {
-    return (((pot.total + addValue) * 100) / pot.target).toFixed(2);
+    if (operationType === "add" || operationType == null) {
+      return (((pot.total + amount) * 100) / pot.target).toFixed(2);
+    }
+    return (((pot.total - amount) * 100) / pot.target).toFixed(2);
   };
   return (
     <div className={styles.progressBarContainer}>
@@ -24,11 +34,12 @@ export function PotProgressBar({ pot, addValue = 0 }) {
             width: `${calculateProgressBarValue()}%`,
           }}
         ></div>
-        {addValue !== 0 && (
+        {amount !== 0 && (
           <div
             className={styles.progressBarChange}
             style={{
-              "--pot-color": pot.theme,
+              backgroundColor:
+                operationType === "add" ? "var(--color-green)" : "red",
               width: `${calculateProgressBarChange()}%`,
             }}
           ></div>
@@ -37,7 +48,14 @@ export function PotProgressBar({ pot, addValue = 0 }) {
       <div className={styles.descriptionContainer}>
         <span
           className={styles.newAmountText}
-          style={{ color: addValue != 0 ? pot.theme : "" }}
+          style={{
+            color:
+              amount != 0
+                ? operationType === "add"
+                  ? "var(--color-green)"
+                  : "red"
+                : "",
+          }}
         >{`${calculateNewProgress()}%`}</span>
         <span
           className={styles.operationsText}
