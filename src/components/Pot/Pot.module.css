@@ -45,3 +45,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media (min-width: 1024px) {
+  .potButtonsContainer {
+    justify-content: space-around;
+  }
+}

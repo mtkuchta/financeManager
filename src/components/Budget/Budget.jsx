@@ -26,7 +26,7 @@ export function Budget({
   };
 
   return (
-    <ItemContainer>
+    <ItemContainer type="budget">
       <div className={styles.budgetHeader}>
         <HeaderWithTheme
           theme={budget.theme}

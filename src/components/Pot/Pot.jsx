@@ -8,6 +8,7 @@ import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { Modal } from "../Modal/Modal";
 import { PotOperationsForm } from "../PotOperationsForm/PotOperationsForm";
 import { PotProgressBar } from "../PotProgressBar/PotProgressBar";
+import { WindowSizeContext } from "../../assets/contexts/WindowSizeContext";
 
 const operationModalTexts = {
   add: "Add money to your pot to keep it separate from your main balance. As soon as you add this money, it will be deducted from your current balance.",
@@ -17,6 +18,7 @@ const operationModalTexts = {
 
 export function Pot({ pot, editPot }) {
   const { deletePot } = useContext(UserDataContext);
+  const { windowSize } = useContext(WindowSizeContext);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [potOperation, setPotOperation] = useState(null);
 
@@ -29,7 +31,7 @@ export function Pot({ pot, editPot }) {
   };
 
   return (
-    <ItemContainer>
+    <ItemContainer type="pot">
       <HeaderWithTheme
         text={pot.name}
         theme={pot.theme}
@@ -53,7 +55,7 @@ export function Pot({ pot, editPot }) {
         <Button
           text="Withdraw"
           color="secondary"
-          size="small"
+          size={windowSize === "mobile" ? "small" : "normal"}
           onClick={() => setPotOperation("withdraw")}
         />
       </div>

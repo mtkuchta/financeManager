@@ -1,3 +1,4 @@
+import styles from "./Pots.module.css";
 import { useState, useContext } from "react";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
 import { ContentHeader } from "../../components/ContentHeader/ContentHeader";
@@ -21,11 +22,11 @@ export function Pots() {
   };
 
   return (
-    <div>
+    <div className={styles.potsContainer}>
       <ContentHeader>
         <Button text={"+ Add New Pot"} onClick={() => setIsModalOpen(true)} />
       </ContentHeader>
-      <div>
+      <div className={styles.pots}>
         {pots.map((pot) => (
           <Pot
             key={`pot_${pot.name}`}
