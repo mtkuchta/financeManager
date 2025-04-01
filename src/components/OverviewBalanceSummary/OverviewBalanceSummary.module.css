@@ -1,0 +1,31 @@
+.balanceContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.item {
+  padding: 20px;
+  height: 111px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  justify-content: space-between;
+  color: var(--color-grey-900);
+  border-radius: 12px;
+  margin: 6px 0 6px 0;
+}
+
+.item:first-child {
+  color: var(--color-white);
+  background-color: var(--color-grey-900);
+}
+
+.balanceText {
+  font-size: var(--font-size-preset-4);
+}
+
+.balanceAmount {
+  font-size: var(--font-size-preset-1);
+  font-weight: bold;
+}
