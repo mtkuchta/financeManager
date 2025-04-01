@@ -32,27 +32,9 @@
   margin: 5px 0 15px 0;
 }
 
-/* .progressBar {
-  width: 100%;
-  height: 8px;
-  display: flex;
-  background-color: var(--color-beige-100);
-  border-radius: 4px;
+.inputText:focus {
+  outline: none;
 }
-
-.progressBarValue {
-  border-radius: 4px 0 0 4px;
-  height: 8px;
-  background-color: var(--color-grey-900);
-}
-
-.progressBarChange {
-  border-radius: 0 4px 4px 0;
-
-  height: 8px;
-  background-color: var(--pot-color);
-  margin-left: 2px;
-} */
 
 .newAmountText {
   font-size: var(--font-size-preset-5);

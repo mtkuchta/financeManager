@@ -14,7 +14,6 @@ export function PotOperationsForm({ pot, operationType, onClose }) {
     changePotTotal(pot, Number(data.amount), operationType);
     onClose();
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.descriptionContainer}>
@@ -39,7 +38,9 @@ export function PotOperationsForm({ pot, operationType, onClose }) {
         name="amount"
         id="amount"
         placeholder="$ 400"
-        {...register("amount")}
+        {...register("amount", {
+          max: operationType === "withdraw" ? pot.total : "",
+        })}
       />
       <Button
         text={operationType === "add" ? "Confirm Addition" : "Confirm Withdraw"}

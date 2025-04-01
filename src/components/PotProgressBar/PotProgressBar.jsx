@@ -5,6 +5,8 @@ export function PotProgressBar({ pot, amount = 0, operationType }) {
     if (operationType === "add") {
       return ((pot.total * 100) / pot.target).toFixed(2);
     }
+
+    if (amount > pot.total) return 0;
     return (((pot.total - amount) * 100) / pot.target).toFixed(2);
   };
 
@@ -15,7 +17,7 @@ export function PotProgressBar({ pot, amount = 0, operationType }) {
         calculateProgressBarValue()
       );
     }
-
+    if (amount > pot.total) return ((pot.total * 100) / pot.target).toFixed(2);
     return ((amount * 100) / pot.target).toFixed();
   };
 
@@ -23,6 +25,7 @@ export function PotProgressBar({ pot, amount = 0, operationType }) {
     if (operationType === "add" || operationType == null) {
       return (((pot.total + amount) * 100) / pot.target).toFixed(2);
     }
+    if (amount > pot.total) return 0;
     return (((pot.total - amount) * 100) / pot.target).toFixed(2);
   };
   return (
@@ -56,7 +59,9 @@ export function PotProgressBar({ pot, amount = 0, operationType }) {
                   : "red"
                 : "",
           }}
-        >{`${calculateNewProgress()}%`}</span>
+        >{`${calculateNewProgress()}% ${
+          amount > pot.total ? "Withdraw can't be greater than amount!" : ""
+        }`}</span>
         <span
           className={styles.operationsText}
         >{`Target of $${pot.target}`}</span>
