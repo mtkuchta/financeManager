@@ -1,0 +1,79 @@
+.potsOverviewContainer {
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.totalSaved {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-beige-100);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.iconContainer {
+  width: 40px;
+  height: 40px;
+}
+
+.textContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 16px;
+}
+
+.text {
+  font-size: var(--font-size-preset-4);
+  color: var(--color-grey-500);
+}
+
+.value {
+  font-size: var(--font-size-preset-1);
+  color: var(--color-grey-900);
+  font-weight: bold;
+}
+
+.pots {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pot {
+  position: relative;
+  width: 50%;
+  height: 43px;
+  flex-shrink: 0;
+  padding-left: 16px;
+  margin-bottom: 16px;
+}
+
+.pot::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--pot-theme);
+  border-radius: 2px;
+}
+
+.potName {
+  font-size: var(--font-size-preset-5);
+  color: var(--color-grey-500);
+}
+
+.potValue {
+  font-size: var(--font-size-preset-4);
+  font-weight: bold;
+  color: var(--color-grey-900);
+}

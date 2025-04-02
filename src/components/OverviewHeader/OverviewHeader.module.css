@@ -1,0 +1,24 @@
+.overviewHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.name {
+  font-size: var(--font-size-preset-2);
+  font-weight: bold;
+  color: var(--color-grey-900);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+}
+
+.linkText {
+  font-size: var(--font-size-preset-4);
+  color: var(--color-grey-500);
+  margin-right: 10px;
+}
