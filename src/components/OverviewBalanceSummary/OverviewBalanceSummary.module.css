@@ -29,3 +29,14 @@
   font-size: var(--font-size-preset-1);
   font-weight: bold;
 }
+
+@media (min-width: 768px) {
+  .balanceContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .item {
+    width: 32%;
+  }
+}
