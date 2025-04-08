@@ -1,0 +1,13 @@
+.budgetsOverviewContainer {
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 12px;
+  margin-top: 24px;
+  padding: 20px 24px 20px 24px;
+}
+
+.budgets {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

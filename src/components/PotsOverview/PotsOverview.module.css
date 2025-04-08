@@ -47,7 +47,7 @@
   flex-wrap: wrap;
 }
 
-.pot {
+/* .pot {
   position: relative;
   width: 50%;
   height: 43px;
@@ -76,4 +76,4 @@
   font-size: var(--font-size-preset-4);
   font-weight: bold;
   color: var(--color-grey-900);
-}
+} */

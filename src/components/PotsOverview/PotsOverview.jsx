@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ReactComponent as IconPot } from "../../assets/icons/icon-pot.svg";
 import { OverviewHeader } from "../OverviewHeader/OverviewHeader";
 import { UserDataContext } from "../../assets/contexts/UserDataContext";
+import { OverviewItem } from "../OverviewItem/OverviewItem";
 
 export function PotsOverview() {
   const { pots } = useContext(UserDataContext);
@@ -29,14 +30,12 @@ export function PotsOverview() {
       </div>
       <div className={styles.pots}>
         {pots.map((pot) => (
-          <div
+          <OverviewItem
             key={pot.name}
-            className={styles.pot}
-            style={{ "--pot-theme": pot.theme }}
-          >
-            <p className={styles.potName}>{pot.name}</p>
-            <span className={styles.potValue}>{`$${pot.total}`}</span>
-          </div>
+            name={pot.name}
+            theme={pot.theme}
+            total={pot.total}
+          />
         ))}
       </div>
     </div>
